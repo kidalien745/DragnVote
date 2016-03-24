@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  div.container.main-container
+    div.text-center(ng-app="candidatesApp", ng-controller="CandidatesCtrl")
+      div.col-md-12.control-group
+        div.panel.panel-default
+          input(type="text", ng-model="newCandidateName", placeholder="Name", required)
+          input(type="text", ng-model="newCandidatePictureUrl", placeholder="Picture URL", required)
+          button#btnAddCandidate.btn(ng-click="addCandidate()") Add Candidate
+      div.col-md-12
+        div.col-md-12.rowmargin.panel.panel-default(ng-repeat="candidate in candidates")
+          div.media.panel-body
+            div.media-left.media-middle
+              img.media-object(ng-if="candidate.pictureUrl != 'null'",src="{{candidate.pictureUrl}}",height="64px",width="64px")
+              span.glyphicon.glyphicon-question-sign.media-object(ng-if="candidate.pictureUrl == 'null'",aria-hidden="true")
+            div.media-body.media-middle
+              h4.media-heading {{candidate.name}}
+            div.media-right.media-middle
+              a(ng-click="removeCandidate($index)"): span.glyphicon.glyphicon-remove.media-object(aria-hidden="true")
+
+block scripts
+  script(src="/javascripts/candidates.js")

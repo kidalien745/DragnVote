@@ -1,0 +1,29 @@
+extends layout
+
+block head
+  link(rel='stylesheet', href='/ng-sortable/ng-sortable.min.css')
+
+block content
+  div.container.main-container
+    div.content(ng-app="voteApp", ng-controller="VoteCtrl")
+      div.row
+        div(as-sortable="sortOptions",ng-model="candidates")
+          div.panel.panel-default.sorting-parent(as-sortable-item,ng-repeat="candidate in candidates")
+            div.row(as-sortable-item-handle,style="margin-left:15px;margin-right:15px")
+              div.panel-body(style="float:left")
+                span {{candidate}}
+            div.btn-group.pull-right(role="group",style="padding-top:8px;padding-right:5px;padding-bottom:5px;z-index:10")
+              button.btn.btn-default.btn-sm(type="button",ng-click="merge(-1, $index)",ng-hide="$index == 0",aria-label="Merge Up")
+                  span.glyphicon.glyphicon-chevron-up(aria-hidden="true")
+                button.btn.btn-default.btn-sm(type="button",ng-click="merge(1, $index)",ng-hide="$index == (candidates.length - 1)",aria-label="Merge Down")
+                  span.glyphicon.glyphicon-chevron-down(aria-hidden="true")
+      div.row.button-row
+        button.btn.btn-lg.btn-primary.btn-block(ng-click="submitBallot()", ng-show="candidates.length > 1") Submit
+        button.btn.btn-lg.btn-primary.btn-block(ng-click="resetBallot()") Reset
+
+  div.footer
+
+block scripts
+  script(src='/ng-sortable/ng-sortable.min.js')
+  script(src="/javascripts/vote.js")
+

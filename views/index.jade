@@ -1,0 +1,17 @@
+extends layout
+block content
+  div.container.main-container
+    if !loggedIn
+      form.form-signin(action="/login", method="post")
+        h2.form-signin-heading Please sign in
+        label.sr-only(for="inputVoterID") Voter ID
+        input#inputVoterID.form-control(type="text", placeholder="Voter ID", name="voterId", required, autofocus)
+        label.sr-only(for="inputPassword") Password
+        input#inputPassword.form-control(type="password", placeholder="Pasword", name="password", required)
+        button.btn.btn-lg.btn-primary.btn-block(type="submit") Sign in
+        button.btn.btn-lg.btn-primary.btn-block(type="button", onclick="location.href='register'") Register
+    if loggedIn
+        button.btn.btn-lg.btn-primary.btn-block(type="button", onclick="location.href='vote'") Vote
+        button.btn.btn-lg.btn-primary.btn-block(type="button", onclick="location.href='register'") Register
+        button.btn.btn-lg.btn-primary.btn-block(type="button", onclick="location.href='logout'") Logout
+  div.footer
