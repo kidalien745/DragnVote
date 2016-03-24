@@ -3,16 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node app.js"
   },
   "description": "DragnVoting",
-  "author": {
-    "name": "Austin",
-    "email": ""
-  },
+  "author": "Austin",
   "dependencies": {
     "angular": "^1.3.13",
-	"angular-touch": "*",
+    "angular-touch": "*",
     "bcrypt": "*",
     "body-parser": "~1.8.1",
     "bootstrap": "^3.3.2",
@@ -23,11 +20,22 @@
     "jade": "~1.6.0",
     "mongoose": "^3.8.23",
     "morgan": "~1.3.0",
-	"ng-sortable": "*",
+    "ng-sortable": "*",
     "passport": "^0.2.1",
     "passport-local": "^1.0.0",
     "serve-favicon": "~2.1.3",
     "sortablejs": "^1.1.1",
     "stylus": "0.42.3"
-  }
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kidalien745/dragnvote.git"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kidalien745/dragnvote/issues"
+  },
+  "homepage": "https://github.com/kidalien745/dragnvote"
 }
