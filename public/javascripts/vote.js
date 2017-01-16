@@ -1,4 +1,4 @@
-var app = angular.module('voteApp', ['ngTouch', 'ui.sortable']);
+var app = angular.module('voteApp', ['ngTouch', 'as.sortable']);
 
 app.factory('voteCRUD', function ($http, $q) {
     function submitBallot(vote) {
