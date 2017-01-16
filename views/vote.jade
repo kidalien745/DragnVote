@@ -1,6 +1,6 @@
 ﻿extends layout
 block head
-    link(rel='stylesheet', href='/ng-sortable/ng-sortable.min.css')
+    link(rel='stylesheet', href='/ng-sortable/dist/ng-sortable.min.css')
 block content
     div.container(style="padding:0 5px; margin-top:10px; width: 100%")
         div.content(ng-app="voteApp", ng-controller="VoteCtrl")
@@ -20,5 +20,5 @@ block content
             button.btn.btn-lg.btn-primary.btn-block(ng-click="resetBallot()") Reset
     div.footer
 block scripts
-    script(src="/ng-sortable/ng-sortable.min.js")
+    script(src="/ng-sortable/dist/ng-sortable.min.js")
     script(src="/javascripts/vote.js")
