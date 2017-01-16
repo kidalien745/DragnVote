@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 
 var userSchema = mongoose.Schema( {
     voterId: { type: String, required: true, unique: true },
