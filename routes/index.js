@@ -37,6 +37,7 @@ module.exports = function(passport) {
 
     router.post('/ballot', isLoggedIn, votes.update);
     router.get('/ballot', isLoggedIn, votes.get);
+    router.get('/ranking', isLoggedIn, isAdmin, votes.getRanking);
 
     router.get('/register', users.add, function (req, res) {
         var voterId = req.user.voterId;
