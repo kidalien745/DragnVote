@@ -18,6 +18,17 @@ exports.getAll = function (request, response) {
     });
 };
 
+exports.getAllInternal = function (callback) {
+    CandidateModel.find().exec(function (err, res) {
+        if (err) {
+            callback(null);
+        }
+        else {
+            callback(res);
+        }
+    });
+}
+
 exports.add = function (request, response) {
     var newCandidate = { name: request.body.name, pictureUrl: request.body.pictureUrl };
     CandidateModel.create(newCandidate, function (addError, addedCandidate) {

@@ -18,6 +18,8 @@ block content
               h4.media-heading {{candidate.name}}
             div.media-right.media-middle
               a(ng-click="removeCandidate($index)"): span.glyphicon.glyphicon-remove.media-object(aria-hidden="true")
+      div.col-md-12
+        a.btn.btn-lg.btn-primary.btn-block(href="../ranking") Calculate Rank
 
 block scripts
   script(src="/javascripts/candidates.js")
