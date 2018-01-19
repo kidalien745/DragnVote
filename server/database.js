@@ -3,7 +3,7 @@ var CandidateModel = require('../models/candidate').CandidateModel;
 var UserModel = require('../models/user').UserModel;
 var LocalStrategy = require('passport-local').Strategy;
 
-mongoose.connect('localhost', 'voteDb');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://heroku_xx9d861c:c3v9jflk470pktcsgbusdg0fi5@ds263317.mlab.com:63317/heroku_xx9d861c');
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, "connection error"));
@@ -11,14 +11,14 @@ db.once('open', function () {
     console.log("voteDb is open...");
     CandidateModel.find().exec(function (error, results) {
         if (results.length === 0) {
-            CandidateModel.create({ name: "Austin Lien", pictureUrl: "null" });
-            CandidateModel.create({ name: "Patty King", pictureUrl: "null" });
-            CandidateModel.create({ name: "James Hron", pictureUrl: "null" });
+            CandidateModel.create({ name: "Test One", pictureUrl: "null" });
+            CandidateModel.create({ name: "Test Two", pictureUrl: "null" });
+            CandidateModel.create({ name: "Test Three", pictureUrl: "null" });
         }
     });
     UserModel.find().exec(function (error, results) {
         if (results.length === 0) {
-            var usr = new UserModel({ voterId: "admin", password: "55745p" });
+            var usr = new UserModel({ voterId: "admin", password: "admin" });
             usr.save(function (err) {
                 if (err) {
                     console.log(err);
