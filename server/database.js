@@ -3,7 +3,7 @@ var CandidateModel = require('../models/candidate').CandidateModel;
 var UserModel = require('../models/user').UserModel;
 var LocalStrategy = require('passport-local').Strategy;
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://heroku_xx9d861c:c3v9jflk470pktcsgbusdg0fi5@ds263317.mlab.com:63317/heroku_xx9d861c');
+mongoose.connect(process.env.MONGODB_URI);
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, "connection error"));
@@ -18,7 +18,7 @@ db.once('open', function () {
     });
     UserModel.find().exec(function (error, results) {
         if (results.length === 0) {
-            var usr = new UserModel({ voterId: "admin", password: "admin" });
+            var usr = new UserModel({ voterId: "admin", password: process.env.ADMIN_PASS });
             usr.save(function (err) {
                 if (err) {
                     console.log(err);
