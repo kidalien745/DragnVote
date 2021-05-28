@@ -4,10 +4,7 @@ var UserModel = require('../models/user').UserModel;
 var LocalStrategy = require('passport-local').Strategy;
 
 mongoose.connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true, useUnifiedTopology: true, dbName: "voteDb", socketOptions: {
-        socketTimeoutMS: 0,
-        connectionTimeout: 0
-    }
+    useNewUrlParser: true, useUnifiedTopology: true, dbName: "voteDb", serverSelectionTimeoutMS: 100000,
 });
 var db = mongoose.connection;
 
