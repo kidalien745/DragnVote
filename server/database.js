@@ -3,7 +3,12 @@ var CandidateModel = require('../models/candidate').CandidateModel;
 var UserModel = require('../models/user').UserModel;
 var LocalStrategy = require('passport-local').Strategy;
 
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, dbName: "voteDb" });
+mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true, useUnifiedTopology: true, dbName: "voteDb", socketOptions: {
+        socketTimeoutMS: 0,
+        connectionTimeout: 0
+    }
+});
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, "connection error"));
